@@ -13,4 +13,4 @@ boto3
 botocore
 torch-scatter
 pyecharts
-modelscope
+modelscope==1.9.5
