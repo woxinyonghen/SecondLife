@@ -5,8 +5,8 @@ import requests
 import json
 
 # 修改成自己的api key和secret key
-API_KEY = "YEXtjjnQvZMmMnaCYsPjYGA2"
-SECRET_KEY = "yqWImNmkbo1N8wSYaqquAUdiwuNDquZc"
+API_KEY = "api key"
+SECRET_KEY = "secret key"
 
 
 def main():
