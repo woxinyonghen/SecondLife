@@ -10,14 +10,6 @@ from openxlab.model import download
 
 download(model_repo='星辰/The_History', output='history')
 
-
-# 加载微调后的模型
-print("load model begin.")
-model, tokenizer = load_model('history')
-print("load model end")
-
-game = game_control()
-
 def load_model(model_dir):
     model = (
         AutoModelForCausalLM.from_pretrained(model_dir, trust_remote_code=True)
@@ -27,6 +19,12 @@ def load_model(model_dir):
     tokenizer = AutoTokenizer.from_pretrained(model_dir, trust_remote_code=True)
     return model, tokenizer
 
+# 加载微调后的模型
+print("load model begin.")
+model, tokenizer = load_model('history')
+print("load model end")
+
+game = game_control()
 
 def fn_next_year():
     print_text = game.get_next_year()
