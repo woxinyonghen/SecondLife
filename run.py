@@ -1,7 +1,7 @@
 import gradio as gr
 from agents.second_life import game_control
-from models.internlm2_chat_7b_sdk import load_model, internlm2_summary, internlm2_chat
-
+from models.internlm2_chat_7b_sdk import internlm2_summary, internlm2_chat
+from transformers import AutoModelForCausalLM, AutoTokenizer
 import copy
 import traceback
 
@@ -12,9 +12,20 @@ download(model_repo='星辰/The_History', output='history')
 
 
 # 加载微调后的模型
-model, tokenizer = load_model()
+print("load model begin.")
+model, tokenizer = load_model('history')
+print("load model end")
 
 game = game_control()
+
+def load_model(model_dir):
+    model = (
+        AutoModelForCausalLM.from_pretrained(model_dir, trust_remote_code=True)
+        .to(torch.bfloat16)
+        .cuda()
+    )
+    tokenizer = AutoTokenizer.from_pretrained(model_dir, trust_remote_code=True)
+    return model, tokenizer
 
 
 def fn_next_year():
