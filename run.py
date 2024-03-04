@@ -3,6 +3,7 @@ from agents.second_life import game_control
 from models.internlm2_chat_7b_sdk import internlm2_summary, internlm2_chat
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import copy
+import torch
 import traceback
 
 from openxlab.model import download
