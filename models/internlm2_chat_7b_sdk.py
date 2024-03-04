@@ -3,6 +3,7 @@ import torch
 
 
 def load_model():
+    torch.cuda.empty_cache()
     print("load model start")
     model_dir = 'history'
     model = (
