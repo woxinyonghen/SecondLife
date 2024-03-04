@@ -12,8 +12,6 @@ from openxlab.model import download
 download(model_repo='星辰/The_History', output='history')
 
 def load_model(model_dir):
-    torch.cuda.empty_cache()
-    print("empty cache")
     model = (
         AutoModelForCausalLM.from_pretrained(model_dir, trust_remote_code=True)
         .to(torch.bfloat16)
