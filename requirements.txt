@@ -14,3 +14,4 @@ botocore
 torch-scatter
 pyecharts
 modelscope==1.9.5
+einops
