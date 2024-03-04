@@ -8,7 +8,7 @@ import traceback
 from openxlab.model import download
 
 
-download(model_repo='星辰/xing_chen_personal_assistant', output='history')
+download(model_repo='星辰/The_History', output='history')
 
 def load_model(model_dir):
     model = (
