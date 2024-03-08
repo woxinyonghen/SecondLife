@@ -11,19 +11,19 @@ from openxlab.model import download
 
 download(model_repo='星辰/The_History', output='history')
 
-def load_model(model_dir):
-    model = (
-        AutoModelForCausalLM.from_pretrained(model_dir, trust_remote_code=True)
-        .to(torch.bfloat16)
-        .cuda()
-    )
-    tokenizer = AutoTokenizer.from_pretrained(model_dir, trust_remote_code=True)
-    return model, tokenizer
+# def load_model(model_dir):
+#     model = (
+#         AutoModelForCausalLM.from_pretrained(model_dir, trust_remote_code=True)
+#         .to(torch.bfloat16)
+#         .cuda()
+#     )
+#     tokenizer = AutoTokenizer.from_pretrained(model_dir, trust_remote_code=True)
+#     return model, tokenizer
 
-# 加载微调后的模型
-print("load model begin.")
-model, tokenizer = load_model('history')
-print("load model end")
+# # 加载微调后的模型
+# print("load model begin.")
+# model, tokenizer = load_model('history')
+# print("load model end")
 
 game = game_control()
 
