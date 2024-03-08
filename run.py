@@ -50,7 +50,7 @@ def fn_all_life(v1, v2, v3, v4, v5):
             if game.player_info["LIF"] < 0:
                 break
     final_txt = '\n'.join(game.all_text)
-    summary_text = internlm2_summary(f"你需要根据给定的人生记录，对这个人的人生进行评价。人生记录为{final_txt}", model, tokenizer)
+    summary_text = internlm2_summary(f"你需要根据给定的人生记录，对这个人的人生进行评价。人生记录为{final_txt}")
     return '\n'.join(game.all_text), summary_text
 
 
@@ -60,7 +60,7 @@ def fn_restart():
 
 
 def echo(message, history):
-    message = internlm2_chat(message, model, tokenizer)
+    message = internlm2_chat(message)
     return message
 
 
