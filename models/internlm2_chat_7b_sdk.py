@@ -1,9 +1,8 @@
-from modelscope import snapshot_download, AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
 
 
-def load_model():
-    torch.cuda.empty_cache()
+def internlm2_summary(life_record):
     print("load model start")
     model_dir = 'history'
     model = (
@@ -13,20 +12,24 @@ def load_model():
     )
     tokenizer = AutoTokenizer.from_pretrained(model_dir, trust_remote_code=True)
     print("load model end")
-    return model, tokenizer
-
-
-def internlm2_summary(life_record, model, tokenizer):
-    model = model.to(torch.bfloat16).cuda()
     model.eval()
-    print(life_record)
+    # print(life_record)
     response, history = model.chat(tokenizer, life_record, history=[])
+    torch.cuda.empty_cache()
     return response
 
 
-def internlm2_chat(prompt, model, tokenizer):
-    model = model.to(torch.bfloat16).cuda()
+def internlm2_chat(prompt):
+    print("load model start")
+    model_dir = 'history'
+    model = (
+        AutoModelForCausalLM.from_pretrained(model_dir, trust_remote_code=True)
+            .to(torch.bfloat16)
+            .cuda()
+    )
+    tokenizer = AutoTokenizer.from_pretrained(model_dir, trust_remote_code=True)
+    print("load model end")
     model.eval()
-
     response, history = model.chat(tokenizer, prompt, history=[])
+    torch.cuda.empty_cache()
     return response
